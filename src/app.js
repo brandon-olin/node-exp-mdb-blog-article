@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const userRouter = require('./routers/user');
 
 const app = express();
 
@@ -14,6 +15,9 @@ mongoose.connect('mongodb://localhost:27017/simple-blog-exercise', {
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Routers
+app.use(userRouter);
 
 app.listen(3000, () => {
   console.log('Server running on port 3000')
